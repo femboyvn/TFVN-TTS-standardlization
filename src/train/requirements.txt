@@ -1,0 +1,7 @@
+# Python side: training (step 2), ONNX export (step 3) and evaluation.
+torch>=2.3
+tokenizers>=0.19
+numpy
+onnx
+onnxruntime>=1.18
+onnxscript
