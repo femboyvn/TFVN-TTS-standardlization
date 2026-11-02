@@ -1,0 +1,32 @@
+# build
+target/
+**/target/
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# data + model artifacts live on Hugging Face, never in git
+data/
+data_*/
+models/
+ckpt*/
+onnx*/
+runs/
+dist/
+*.onnx
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.jsonl
+*.jsonl.gz
+*.parquet
+*.zip
+*.tar.gz
+*.log
+# secrets
+.env
+docker/.env
+.DS_Store

@@ -1,0 +1,8 @@
+**/target/
+.git/
+.venv/
+data/
+data_*/
+ckpt*/
+*.pt
+*.log
