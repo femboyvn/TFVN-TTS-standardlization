@@ -1,0 +1,17 @@
+# Run from docker/:  Copy-Item .env.example .env  (set HF_REPO)  ;  docker compose up -d --build
+services:
+  teencode:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: teencode-hf:latest
+    env_file: .env
+    environment:
+      HF_ENDPOINT: ${HF_ENDPOINT:-https://huggingface.co}
+    ports:
+      - "8080:8080"
+    volumes:
+      - models:/models
+    restart: unless-stopped
+volumes:
+  models:
