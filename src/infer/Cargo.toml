@@ -1,0 +1,27 @@
+[package]
+name = "teencode-infer"
+version = "0.3.0"
+edition = "2021"
+license = "MIT"
+description = "Vietnamese teencode -> standard Vietnamese normalizer: INT8 ONNX inference (beam 4 + guard, CLI + HTTP), Raspberry Pi 4 ready"
+
+[[bin]]
+name = "step_4_inference"
+path = "src/step_4_inference.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokenizers = { version = "0.21", default-features = false, features = ["onig"] }
+# load-dynamic: loads libonnxruntime.so at runtime; set ORT_DYLIB_PATH (ONNX Runtime 1.22.x, x86_64 or aarch64).
+ort = { version = "=2.0.0-rc.10", default-features = false, features = ["std", "ndarray", "load-dynamic"] }
+ndarray = "0.16"
+anyhow = "1"
+unicode-normalization = "0.1"
+tiny_http = "0.12"   # --serve HTTP mode
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 4
+strip = true
